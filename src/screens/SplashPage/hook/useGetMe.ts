@@ -14,9 +14,7 @@ export function useGetMe(options?: Omit<UseQueryOptions<MeApiResponse, Error>, '
     const query = useQuery<MeApiResponse, Error>({
         queryKey: GET_ME_QUERY_KEY,
         queryFn: () => splashScreenApiService.getMe(),
-        // For authentication checks, we usually don't want to retry on failure (e.g., 401)
         retry: false,
-        // Keep data fresh for 5 minutes to prevent excessive refetching on background/foreground
         staleTime: 1000 * 60 * 5,
         ...options,
     });

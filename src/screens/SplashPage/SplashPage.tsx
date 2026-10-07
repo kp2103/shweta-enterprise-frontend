@@ -10,25 +10,19 @@ export function SplashPage() {
 
   // Handle routing once fetching is done
   useEffect(() => {
-    console.log('[SplashPage] Current fetching state -> isLoading:', isLoading);
     if (error) {
       console.log('[SplashPage] Fetch Error Details:', error.message);
       console.log('[SplashPage] BACKEND_BASE_URL is:', process.env.BACKEND_BASE_URL);
       console.log('[SplashPage] EXPO_PUBLIC_BACKEND_BASE_URL is:', process.env.EXPO_PUBLIC_BACKEND_BASE_URL);
     }
 
-    if (!isLoading) {
+    if (!isLoading && user) {
       console.log('[SplashPage] Fetch finished! User data:', user);
-      
-      if (user) {
-        // User is fully authenticated, route to main dashboard/app
-        console.log('[SplashPage] Routing to /explore');
-        router.replace('/explore');
-      } else {
-        // User is not authenticated (or API failed), route to login
-        console.log('[SplashPage] Routing to /onboarding');
-        router.replace('/onboarding');
-      }
+      router.replace('/explore');
+    }
+    else {
+      console.log('[SplashPage] Routing to /onboarding');
+      router.replace('/onboarding');
     }
   }, [isLoading, user]);
 

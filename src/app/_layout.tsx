@@ -1,9 +1,8 @@
 import { QueryClient, QueryClientProvider, onlineManager } from '@tanstack/react-query';
 import * as Network from 'expo-network';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
+import { useSplashCheck } from '@/features/auth/hooks/useSplashCheck';
 
 // 1. Configure the network listener for TanStack Query
 onlineManager.setEventListener((setOnline) => {
@@ -34,10 +33,11 @@ onlineManager.setEventListener((setOnline) => {
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
-  useEffect(() => {
-    // Hide the native splash as soon as JS is ready
-    SplashScreen.hideAsync().catch(() => { });
-  }, []);
+  const { appIsReady } = useSplashCheck();
+
+  if (!appIsReady) {
+    return null;
+  }
 
   return (
     // 3. Wrap your entire app (the Fragment) in the Provider
