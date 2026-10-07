@@ -1,10 +1,9 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { AuthButton } from '../../../components/buttons/AuthButton';
 import { AuthInput } from '../../../components/inputs/AuthInput';
-import { styles } from '../../../pages/LoginPage/LoginPage.styles';
+import { styles } from '../../../screens/LoginPage/LoginPage.styles';
 
 export function LoginForm() {
   const [isChecked, setIsChecked] = React.useState(true);
@@ -42,7 +41,7 @@ export function LoginForm() {
         </TouchableOpacity>
       </View>
 
-      <AuthButton title="Login" onPress={() => {}} />
+      <AuthButton title="Login" onPress={() => { }} />
 
       <View style={styles.dividerContainer}>
         <View style={styles.dividerLine} />
@@ -55,8 +54,7 @@ export function LoginForm() {
         variant="outline"
         icon={<Ionicons name="logo-google" size={20} color="#4285F4" />}
         textStyle={styles.googleButtonText}
-        style={styles.googleButton}
-        onPress={() => {}}
+        onPress={() => { }}
       />
     </View>
   );

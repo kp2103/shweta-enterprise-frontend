@@ -6,7 +6,7 @@ interface AuthHeaderProps {
   title: string;
   /** Subtitle / description line below the title */
   subtitle: string;
-  /** Whether to show the DoodhSetu app title above the page title */
+  /** Whether to show the Shweta Enterprise app title above the page title */
   showAppName?: boolean;
 }
 
@@ -23,7 +23,7 @@ export function AuthHeader({
         color="#1D4ED8"
         style={styles.icon}
       />
-      {showAppName && <Text style={styles.appName}>DoodhSetu</Text>}
+      {showAppName && <Text style={styles.appName}>Shweta Enterprise</Text>}
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subtitle}>{subtitle}</Text>
     </View>

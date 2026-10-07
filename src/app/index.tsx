@@ -1,4 +1,4 @@
-import { SplashPage } from '@/pages/SplashPage/SplashPage';
+import { SplashPage } from '@/screens/SplashPage/SplashPage';
 
 export default function HomeScreen() {
   return <SplashPage />;

@@ -6,30 +6,10 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   content: {
-    flex: 1,
-    padding: 24,
-  },
-  header: {
-    alignItems: 'center',
-    marginTop: 60,
-    marginBottom: 40,
-  },
-  logoIcon: {
-    marginBottom: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#1F2937',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#6B7280',
-    textAlign: 'center',
+    paddingHorizontal: 24,
   },
   form: {
-    flex: 1,
+    marginBottom: 8,
   },
   optionsRow: {
     flexDirection: 'row',
@@ -54,7 +34,7 @@ export const styles = StyleSheet.create({
   dividerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 24,
+    marginVertical: 20,
   },
   dividerLine: {
     flex: 1,
@@ -66,26 +46,7 @@ export const styles = StyleSheet.create({
     color: '#9CA3AF',
     fontSize: 12,
   },
-  googleButton: {
-    marginBottom: 24,
-  },
   googleButtonText: {
     color: '#4B5563',
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  footerText: {
-    color: '#6B7280',
-    fontSize: 14,
-  },
-  footerLink: {
-    color: '#1D4ED8',
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginLeft: 4,
   },
 });
