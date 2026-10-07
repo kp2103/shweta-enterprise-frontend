@@ -14,7 +14,12 @@ export const apiClient = axios.create({
 apiClient.interceptors.request.use(
     async (request) => {
         console.log('[ApiClient] Request Interceptor running for:', request.url);
-        
+
+        // Skip interceptor for login, register, and logout
+        if (request.url?.includes('/auth/login') || request.url?.includes('/auth/register') || request.url?.includes('/auth/logout')) {
+            return request;
+        }
+
         const accessToken = await tokenService.getAccessToken();
         console.log('[ApiClient] Retrieved Access Token:', accessToken ? 'Exists' : 'NULL');
 
@@ -36,6 +41,11 @@ apiClient.interceptors.response.use(
     async (error) => {
         // here fail so hit an refersh request
         const originalRequest = error.config;
+
+        // Skip retry logic for login, register, and logout
+        if (originalRequest?.url?.includes('/auth/login') || originalRequest?.url?.includes('/auth/register') || originalRequest?.url?.includes('/auth/logout')) {
+            return Promise.reject(error);
+        }
 
         if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true

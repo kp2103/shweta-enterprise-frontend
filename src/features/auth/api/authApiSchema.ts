@@ -12,8 +12,8 @@ const loginApiDataSchema = z.object({
 })
 
 export const loginApiRequestSchema = z.object({
-    email: z.email(),
-    password: z.string(),
+    email: z.string().min(1, { message: "Email is required" }).email({ message: "Please enter a valid email address" }),
+    password: z.string().min(1, { message: "Password is required" }).min(6, { message: "Password must be at least 6 characters" }),
 })
 
 export const loginApiResponseSchema = apiResponseSchema(loginApiDataSchema)
@@ -33,11 +33,11 @@ const registerDataSchema = z.object({
 })
 
 export const registerRequestSchema = z.object({
-    fullName: z.string(),
-    email: z.email(),
-    password: z.string(),
+    fullName: z.string().min(1, { message: "Full name is required" }),
+    email: z.string().min(1, { message: "Email is required" }).email({ message: "Please enter a valid email address" }),
+    password: z.string().min(1, { message: "Password is required" }).min(6, { message: "Password must be at least 6 characters" }),
     avatarURL: z.string().nullish(),
-    roleId: z.enum(["Retail", "Distributor"])
+    roleId: z.enum(["Retail", "Distributor"], { message: "Please select a valid role" })
 })
 
 export const registerApiResponseSchema = apiResponseSchema(registerDataSchema)
